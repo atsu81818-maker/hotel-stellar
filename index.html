@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HOTEL STELLAR | 星のような滞在を</title>
+
+<meta name="description"
+content="HOTEL STELLAR。日常から離れ、特別な時間を過ごすためのホテルです。">
+
+<style>
+
+/* =====================================================
+   基本設定
+===================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+
+    background: #080808;
+
+    color: #f5f1e8;
+
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+/* =====================================================
+   星
+===================================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, #d8c78e 1px, transparent 1.5px);
+
+    background-size:
+        90px 90px,
+        150px 150px,
+        240px 240px;
+
+    background-position:
+        10px 20px,
+        70px 90px,
+        150px 40px;
+
+    opacity: 0.25;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 100;
+
+    padding: 20px 35px;
+
+    background:
+        rgba(5,5,5,0.88);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.12);
+
+    transition: 0.4s;
+}
+
+.header-inner {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.logo {
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.logo-star {
+    color: #d9c47e;
+
+    font-size: 22px;
+
+    text-shadow:
+        0 0 15px rgba(217,196,126,0.8);
+}
+
+.logo-text {
+    font-size: 20px;
+
+    letter-spacing: 5px;
+}
+
+nav {
+    display: flex;
+
+    gap: 28px;
+}
+
+nav a {
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #d7d2c8;
+
+    position: relative;
+
+    padding-bottom: 5px;
+
+    transition: 0.3s;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+
+    height: 1px;
+
+    background: #d9c47e;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a:hover::after {
+    left: 0;
+
+    width: 100%;
+}
+
+/* =====================================================
+   スマホメニュー
+===================================================== */
+
+.menu-button {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,0.35);
+
+    background:
+        rgba(255,255,255,0.05);
+
+    color: white;
+
+    font-size: 19px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    height: 100vh;
+
+    min-height: 650px;
+
+    max-width: none;
+
+    padding: 0;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #141414,
+            #050505
+        );
+}
+
+/* 写真を入れる場所 */
+
+.hero-photo {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.3),
+            rgba(0,0,0,0.85)
+        );
+
+    z-index: 1;
+}
+
+/*
+写真を入れるときは、
+.hero-photo の background-image に
+画像を設定する
+*/
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    padding: 30px;
+
+    animation:
+        heroAppear 1.5s ease forwards;
+}
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+.hero-subtitle {
+    font-size: 12px;
+
+    letter-spacing: 7px;
+
+    color: #d9c47e;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size:
+        clamp(55px, 11vw, 125px);
+
+    font-weight: normal;
+
+    letter-spacing: 18px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 25px rgba(255,255,255,0.25);
+}
+
+.hero-line {
+    width: 90px;
+
+    height: 1px;
+
+    background: #d9c47e;
+
+    margin: 28px auto;
+}
+
+.hero p {
+    margin: 0 0 38px;
+
+    font-size: 17px;
+
+    letter-spacing: 5px;
+
+    color: #ded9ce;
+}
+
+.hero-button {
+    display: inline-block;
+
+    padding: 16px 42px;
+
+    border:
+        1px solid rgba(217,196,126,0.75);
+
+    text-decoration: none;
+
+    letter-spacing: 3px;
+
+    color: #eee3bf;
+
+    transition: 0.35s;
+}
+
+.hero-button:hover {
+    background: #d9c47e;
+
+    color: #080808;
+
+    transform:
+        translateY(-3px);
+}
+
+.scroll {
+    position: absolute;
+
+    z-index: 5;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #aaa;
+}
+
+/* =====================================================
+   共通セクション
+===================================================== */
+
+section {
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 110px 25px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size:
+        clamp(28px, 4vw, 40px);
+
+    font-weight: normal;
+
+    letter-spacing: 8px;
+
+    margin:
+        0 0 60px;
+}
+
+.section-title small {
+    display: block;
+
+    margin-top: 14px;
+
+    font-family: sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #b8a56b;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about {
+    text-align: center;
+
+    max-width: 900px;
+}
+
+.about-lead {
+    font-size:
+        clamp(20px, 3vw, 28px);
+
+    letter-spacing: 4px;
+
+    line-height: 2;
+
+    margin-bottom: 35px;
+}
+
+.about-text {
+    font-family: sans-serif;
+
+    font-size: 14px;
+
+    line-height: 2.3;
+
+    color: #bdbab2;
+}
+
+/* =====================================================
+   ROOMS
+===================================================== */
+
+.rooms {
+    max-width: none;
+
+    background:
+        #0d0d0d;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.rooms-inner {
+    max-width: 1150px;
+
+    margin: auto;
+}
+
+.room-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.room-card {
+    background:
+        #151515;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.room-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(217,196,126,0.45);
+}
+
+.room-image {
+    height: 270px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #292929,
+            #101010
+        );
+
+    color: #777;
+
+    font-family: sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+.room-info {
+    padding: 30px;
+}
+
+.room-info h3 {
+    margin: 0 0 15px;
+
+    font-size: 20px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+}
+
+.room-info p {
+    font-family: sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    color: #aaa;
+}
+
+.room-price {
+    color: #d9c47e !important;
+
+    font-family: Georgia, serif !important;
+
+    font-size: 18px !important;
+}
+
+/* =====================================================
+   DINING
+===================================================== */
+
+.dining {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    padding:
+        0;
+
+    max-width: 1300px;
+}
+
+.dining-image {
+    min-height: 550px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #252525,
+            #0d0d0d
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #777;
+
+    font-family: sans-serif;
+
+    letter-spacing: 3px;
+}
+
+.dining-text {
+    padding:
+        80px 65px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    background:
+        #111;
+}
+
+.dining-label {
+    color: #b8a56b;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+}
+
+.dining-text h2 {
+    margin: 0 0 25px;
+
+    font-size: 36px;
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+}
+
+.dining-text p {
+    font-family: sans-serif;
+
+    font-size: 14px;
+
+    line-height: 2.2;
+
+    color: #bdbab2;
+}
+
+/* =====================================================
+   FACILITIES
+===================================================== */
+
+.facilities {
+    text-align: center;
+}
+
+.facility-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.facility {
+    padding:
+        45px 25px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    transition: 0.35s;
+}
+
+.facility:hover {
+    background:
+        rgba(255,255,255,0.07);
+
+    transform:
+        translateY(-5px);
+}
+
+.facility-icon {
+    font-size: 32px;
+
+    margin-bottom: 18px;
+}
+
+.facility h3 {
+    margin: 0 0 12px;
+
+    font-size: 18px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+}
+
+.facility p {
+    margin: 0;
+
+    font-family: sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color: #999;
+}
+
+/* =====================================================
+   ACCESS
+===================================================== */
+
+.access {
+    max-width: none;
+
+    background:
+        #0d0d0d;
+}
+
+.access-inner {
+    max-width: 1050px;
+
+    margin: auto;
+}
+
+.access-content {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.3fr;
+
+    gap: 30px;
+}
+
+.access-box {
+    padding: 40px;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    background:
+        #151515;
+}
+
+.access-box h3 {
+    margin-top: 0;
+
+    font-size: 21px;
+
+    font-weight: normal;
+
+    letter-spacing: 4px;
+}
+
+.access-info {
+    font-family: sans-serif;
+
+    font-size: 13px;
+
+    line-height: 2.2;
+
+    color: #aaa;
+}
+
+.address {
+    color: #d9c47e;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+.map {
+    min-height: 400px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+}
+
+.map iframe {
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 400px;
+
+    border: 0;
+
+    filter:
+        grayscale(0.8)
+        brightness(0.75);
+}
+
+/* =====================================================
+   RESERVATION
+===================================================== */
+
+.reservation {
+    text-align: center;
+
+    max-width: 800px;
+}
+
+.reservation-text {
+    font-family: sans-serif;
+
+    color: #aaa;
+
+    line-height: 2;
+
+    margin-bottom: 35px;
+}
+
+.reserve-button {
+    display: inline-block;
+
+    padding:
+        17px 50px;
+
+    background:
+        #d9c47e;
+
+    color:
+        #080808;
+
+    text-decoration: none;
+
+    letter-spacing: 3px;
+
+    transition: 0.35s;
+}
+
+.reserve-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    padding:
+        65px 20px;
+
+    text-align: center;
+
+    background:
+        #050505;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.footer-logo {
+    font-size: 23px;
+
+    letter-spacing: 7px;
+}
+
+.footer-star {
+    margin: 18px 0;
+
+    color: #d9c47e;
+
+    letter-spacing: 8px;
+}
+
+footer p {
+    font-family: sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #666;
+}
+
+/* =====================================================
+   フワッと表示
+===================================================== */
+
+.fade-up {
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.fade-up.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+/* =====================================================
+   スマホ
+===================================================== */
+
+@media (max-width: 800px) {
+
+    header {
+        padding:
+            14px 18px;
+    }
+
+    .logo-text {
+        font-size: 17px;
+
+        letter-spacing: 4px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+
+        top: 58px;
+
+        left: 15px;
+        right: 15px;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background:
+            rgba(8,8,8,0.97);
+
+        border:
+            1px solid rgba(255,255,255,0.1);
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        padding:
+            18px;
+
+        text-align: center;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.07);
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+
+        letter-spacing: 8px;
+    }
+
+    .hero p {
+        font-size: 13px;
+
+        letter-spacing: 2px;
+    }
+
+    section {
+        padding:
+            80px 18px;
+    }
+
+    .room-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .dining {
+        grid-template-columns:
+            1fr;
+    }
+
+    .dining-image {
+        min-height: 350px;
+    }
+
+    .dining-text {
+        padding:
+            55px 30px;
+    }
+
+    .facility-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .access-content {
+        grid-template-columns:
+            1fr;
+    }
+
+    .map {
+        min-height: 350px;
+    }
+
+    .map iframe {
+        min-height: 350px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="header-inner">
+
+<a href="#top" class="logo">
+
+<span class="logo-star">
+✦
+</span>
+
+<span class="logo-text">
+HOTEL STELLAR
+</span>
+
+</a>
+
+
+<button
+class="menu-button"
+onclick="toggleMenu()"
+aria-label="メニュー">
+
+☰
+
+</button>
+
+
+<nav id="nav">
+
+<a href="#about">ABOUT</a>
+
+<a href="#rooms">ROOMS</a>
+
+<a href="#dining">DINING</a>
+
+<a href="#facilities">FACILITIES</a>
+
+<a href="#access">ACCESS</a>
+
+<a href="#reservation">RESERVATION</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main id="top">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<div class="hero-photo">
+
+</div>
+
+
+<div class="hero-content">
+
+<div class="hero-subtitle">
+A STAY UNDER THE STARS
+</div>
+
+<h1>
+STELLAR
+</h1>
+
+<div class="hero-line">
+</div>
+
+<p>
+星のように、記憶に残る滞在を。
+</p>
+
+<a
+href="#reservation"
+class="hero-button">
+
+宿泊予約
+
+</a>
+
+</div>
+
+
+<div class="scroll">
+SCROLL ↓
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about" class="about fade-up">
+
+<h2 class="section-title">
+
+ABOUT
+
+<small>
+HOTEL STELLARについて
+</small>
+
+</h2>
+
+
+<p class="about-lead">
+
+日常を離れ、<br>
+静かな時間を。
+
+</p>
+
+
+<p class="about-text">
+
+HOTEL STELLARは、<br>
+ゆっくりとした時間を大切にするホテルです。
+
+<br><br>
+
+旅の疲れを癒やす落ち着いた空間と、<br>
+心に残るひとときをお届けします。
+
+<br><br>
+
+星空を眺めるように、<br>
+あなたの時間をゆっくりとお楽しみください。
+
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     ROOMS
+===================================================== -->
+
+<section id="rooms" class="rooms">
+
+<div class="rooms-inner">
+
+<h2 class="section-title fade-up">
+
+ROOMS
+
+<small>
+客室
+</small>
+
+</h2>
+
+
+<div class="room-grid">
+
+
+<div class="room-card fade-up">
+
+<div class="room-image">
+ROOM PHOTO
+</div>
+
+<div class="room-info">
+
+<h3>
+STELLAR ROOM
+</h3>
+
+<p>
+落ち着いた空間で<br>
+ゆったりと過ごせるスタンダードルーム。
+</p>
+
+<p class="room-price">
+1泊 ¥18,000〜
+</p>
+
+</div>
+
+</div>
+
+
+<div class="room-card fade-up">
+
+<div class="room-image">
+ROOM PHOTO
+</div>
+
+<div class="room-info">
+
+<h3>
+AURORA SUITE
+</h3>
+
+<p>
+広々とした空間と<br>
+上質なインテリアを楽しめるスイート。
+</p>
+
+<p class="room-price">
+1泊 ¥35,000〜
+</p>
+
+</div>
+
+</div>
+
+
+<div class="room-card fade-up">
+
+<div class="room-image">
+ROOM PHOTO
+</div>
+
+<div class="room-info">
+
+<h3>
+STELLAR SUITE
+</h3>
+
+<p>
+特別な日のための<br>
+HOTEL STELLAR最高級のお部屋。
+</p>
+
+<p class="room-price">
+1泊 ¥50,000〜
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     DINING
+===================================================== -->
+
+<section id="dining" class="dining fade-up">
+
+
+<div class="dining-image">
+
+DINING PHOTO
+
+</div>
+
+
+<div class="dining-text">
+
+<div class="dining-label">
+HOTEL RESTAURANT
+</div>
+
+<h2>
+STELLAR DINING
+</h2>
+
+<p>
+
+旬の食材を使った料理と、<br>
+落ち着いた空間で特別な食事を。
+
+</p>
+
+<p>
+
+朝食からディナーまで、<br>
+ホテルで過ごす時間そのものを<br>
+楽しんでいただけます。
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FACILITIES
+===================================================== -->
+
+<section id="facilities" class="facilities">
+
+<h2 class="section-title fade-up">
+
+FACILITIES
+
+<small>
+館内施設
+</small>
+
+</h2>
+
+
+<div class="facility-grid">
+
+
+<div class="facility fade-up">
+
+<div class="facility-icon">
+♨
+</div>
+
+<h3>
+SPA
+</h3>
+
+<p>
+旅の疲れを癒やす<br>
+リラックス空間。
+</p>
+
+</div>
+
+
+<div class="facility fade-up">
+
+<div class="facility-icon">
+☕
+</div>
+
+<h3>
+LOUNGE
+</h3>
+
+<p>
+ゆっくり過ごせる<br>
+ホテルラウンジ。
+</p>
+
+</div>
+
+
+<div class="facility fade-up">
+
+<div class="facility-icon">
+🌙
+</div>
+
+<h3>
+ROOFTOP
+</h3>
+
+<p>
+夜空を眺めながら<br>
+特別な時間を。
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ACCESS
+===================================================== -->
+
+<section id="access" class="access">
+
+<div class="access-inner">
+
+<h2 class="section-title fade-up">
+
+ACCESS
+
+<small>
+アクセス
+</small>
+
+</h2>
+
+
+<div class="access-content">
+
+
+<div class="access-box fade-up">
+
+<h3>
+HOTEL STELLAR
+</h3>
+
+
+<div class="access-info">
+
+<p class="address">
+
+〒000-0000<br>
+
+東京都星空区彗星6-3-4
+
+</p>
+
+
+<p>
+
+チェックイン<br>
+15:00〜
+
+</p>
+
+
+<p>
+
+チェックアウト<br>
+〜11:00
+
+</p>
+
+
+<p>
+
+最寄り駅から徒歩5分
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="map fade-up">
+
+<iframe
+src="https://www.google.com/maps?q=東京都星空区彗星6-3-4&output=embed"
+loading="lazy"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     RESERVATION
+===================================================== -->
+
+<section
+id="reservation"
+class="reservation fade-up">
+
+<h2 class="section-title">
+
+RESERVATION
+
+<small>
+宿泊予約
+</small>
+
+</h2>
+
+
+<p class="reservation-text">
+
+HOTEL STELLARで、<br>
+特別なひとときをお過ごしください。
+
+<br><br>
+
+宿泊に関するお問い合わせ・ご予約は<br>
+下記よりお願いいたします。
+
+</p>
+
+
+<a
+href="mailto:hotel@example.com"
+class="reserve-button">
+
+宿泊予約・お問い合わせ
+
+</a>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="footer-logo">
+✦ HOTEL STELLAR ✦
+</div>
+
+<div class="footer-star">
+✧　⋆　✦　⋆　✧　⋆　✦
+</div>
+
+<p>
+東京都星空区彗星6-3-4
+</p>
+
+<p>
+© HOTEL STELLAR. ALL RIGHTS RESERVED.
+</p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* スマホメニュー */
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("nav");
+
+    nav.classList.toggle("open");
+
+}
+
+
+/* ナビを押したら閉じる */
+
+document
+.querySelectorAll("nav a")
+.forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function() {
+
+            document
+            .getElementById("nav")
+            .classList
+            .remove("open");
+
+        }
+    );
+
+});
+
+
+/* スクロールアニメーション */
+
+const fadeElements =
+    document.querySelectorAll(".fade-up");
+
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target
+                        .classList
+                        .add("show");
+
+                        observer
+                        .unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+fadeElements.forEach(
+    function(element) {
+
+        observer.observe(element);
+
+    }
+);
+
+
+/* ヘッダー */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const header =
+            document.querySelector(
+                "header"
+            );
+
+        if (
+            window.scrollY > 80
+        ) {
+
+            header.style.padding =
+                "12px 35px";
+
+        } else {
+
+            header.style.padding =
+                "20px 35px";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
