@@ -1,959 +1,1150 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HOTEL STELLAR | 星のような滞在を</title>
-
-<meta name="description"
-content="HOTEL STELLAR。日常から離れ、特別な時間を過ごすためのホテルです。">
+<title>STELLAR HOME | 不動産</title>
 
 <style>
 
-/* =====================================================
-   基本設定
-===================================================== */
-
-html {
-    scroll-behavior: smooth;
-}
+/* =========================
+   RESET
+========================= */
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-
     font-family:
-        Georgia,
-        "Times New Roman",
-        "Yu Mincho",
-        "Hiragino Mincho ProN",
-        serif;
-
-    background: #080808;
-
-    color: #f5f1e8;
-
-    overflow-x: hidden;
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+    color: #222;
+    background: #f7f7f5;
 }
 
 a {
+    text-decoration: none;
     color: inherit;
 }
 
-/* =====================================================
-   星
-===================================================== */
-
-body::before {
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: -1;
-
-    background-image:
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, #d8c78e 1px, transparent 1.5px);
-
-    background-size:
-        90px 90px,
-        150px 150px,
-        240px 240px;
-
-    background-position:
-        10px 20px,
-        70px 90px,
-        150px 40px;
-
-    opacity: 0.25;
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
 }
 
-/* =====================================================
+
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 header {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
-
-    z-index: 100;
-
-    padding: 20px 35px;
-
-    background:
-        rgba(5,5,5,0.88);
-
-    backdrop-filter: blur(15px);
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.12);
-
-    transition: 0.4s;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .header-inner {
     max-width: 1250px;
-
+    height: 75px;
     margin: auto;
+    padding: 0 25px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
 .logo {
-    text-decoration: none;
-
     display: flex;
-
     align-items: center;
-
-    gap: 12px;
+    gap: 10px;
 }
 
 .logo-star {
-    color: #d9c47e;
-
-    font-size: 22px;
-
-    text-shadow:
-        0 0 15px rgba(217,196,126,0.8);
+    font-size: 25px;
+    color: #b39a54;
 }
 
 .logo-text {
-    font-size: 20px;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
 
-    letter-spacing: 5px;
+.logo-sub {
+    margin-top: 3px;
+    font-size: 8px;
+    color: #888;
+    letter-spacing: 2px;
 }
 
 nav {
     display: flex;
-
-    gap: 28px;
+    align-items: center;
+    gap: 24px;
 }
 
 nav a {
-    text-decoration: none;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    color: #d7d2c8;
-
-    position: relative;
-
-    padding-bottom: 5px;
-
-    transition: 0.3s;
-}
-
-nav a::after {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 0;
-
-    width: 0;
-
-    height: 1px;
-
-    background: #d9c47e;
-
+    font-size: 12px;
+    color: #444;
     transition: 0.3s;
 }
 
 nav a:hover {
+    color: #b39a54;
+}
+
+.header-contact {
+    padding: 12px 18px;
+    background: #222;
     color: white;
 }
-
-nav a:hover::after {
-    left: 0;
-
-    width: 100%;
-}
-
-/* =====================================================
-   スマホメニュー
-===================================================== */
 
 .menu-button {
     display: none;
-
+    border: 1px solid #ddd;
+    background: white;
     width: 42px;
     height: 42px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid rgba(255,255,255,0.35);
-
-    background:
-        rgba(255,255,255,0.05);
-
-    color: white;
-
-    font-size: 19px;
+    font-size: 20px;
 }
 
-/* =====================================================
+
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero {
-    height: 100vh;
-
+    padding-top: 75px;
     min-height: 650px;
 
-    max-width: none;
-
-    padding: 0;
-
-    position: relative;
+    background:
+        linear-gradient(
+            115deg,
+            #e9e6dc,
+            #f7f6f2 60%,
+            #d9d6cc
+        );
 
     display: flex;
-
     align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #141414,
-            #050505
-        );
 }
 
-/* 写真を入れる場所 */
+.hero-inner {
+    max-width: 1250px;
+    width: 100%;
+    margin: auto;
+    padding: 80px 25px;
 
-.hero-photo {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.3),
-            rgba(0,0,0,0.85)
-        );
-
-    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
 }
 
-/*
-写真を入れるときは、
-.hero-photo の background-image に
-画像を設定する
-*/
-
-.hero-content {
-    position: relative;
-
-    z-index: 5;
-
-    padding: 30px;
-
-    animation:
-        heroAppear 1.5s ease forwards;
-}
-
-@keyframes heroAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-.hero-subtitle {
-    font-size: 12px;
-
-    letter-spacing: 7px;
-
-    color: #d9c47e;
-
+.hero-label {
+    display: inline-block;
+    padding: 8px 15px;
     margin-bottom: 25px;
+
+    border: 1px solid #b39a54;
+    color: #8f783c;
+
+    font-size: 10px;
+    letter-spacing: 3px;
 }
 
 .hero h1 {
     margin: 0;
 
-    font-size:
-        clamp(55px, 11vw, 125px);
-
+    font-family: Georgia, serif;
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1.15;
     font-weight: normal;
-
-    letter-spacing: 18px;
-
-    color: #fff;
-
-    text-shadow:
-        0 0 25px rgba(255,255,255,0.25);
-}
-
-.hero-line {
-    width: 90px;
-
-    height: 1px;
-
-    background: #d9c47e;
-
-    margin: 28px auto;
-}
-
-.hero p {
-    margin: 0 0 38px;
-
-    font-size: 17px;
-
-    letter-spacing: 5px;
-
-    color: #ded9ce;
-}
-
-.hero-button {
-    display: inline-block;
-
-    padding: 16px 42px;
-
-    border:
-        1px solid rgba(217,196,126,0.75);
-
-    text-decoration: none;
-
-    letter-spacing: 3px;
-
-    color: #eee3bf;
-
-    transition: 0.35s;
-}
-
-.hero-button:hover {
-    background: #d9c47e;
-
-    color: #080808;
-
-    transform:
-        translateY(-3px);
-}
-
-.scroll {
-    position: absolute;
-
-    z-index: 5;
-
-    bottom: 30px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 9px;
-
     letter-spacing: 4px;
-
-    color: #aaa;
 }
 
-/* =====================================================
-   共通セクション
-===================================================== */
-
-section {
-    max-width: 1150px;
-
-    margin: auto;
-
-    padding: 110px 25px;
+.hero h1 span {
+    color: #b39a54;
 }
 
-.section-title {
-    text-align: center;
+.hero-lead {
+    margin-top: 28px;
 
-    font-size:
-        clamp(28px, 4vw, 40px);
-
-    font-weight: normal;
-
-    letter-spacing: 8px;
-
-    margin:
-        0 0 60px;
-}
-
-.section-title small {
-    display: block;
-
-    margin-top: 14px;
-
-    font-family: sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    color: #b8a56b;
-}
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about {
-    text-align: center;
-
-    max-width: 900px;
-}
-
-.about-lead {
-    font-size:
-        clamp(20px, 3vw, 28px);
-
-    letter-spacing: 4px;
-
+    font-size: 16px;
     line-height: 2;
-
-    margin-bottom: 35px;
+    color: #555;
 }
 
-.about-text {
-    font-family: sans-serif;
-
-    font-size: 14px;
-
-    line-height: 2.3;
-
-    color: #bdbab2;
-}
-
-/* =====================================================
-   ROOMS
-===================================================== */
-
-.rooms {
-    max-width: none;
-
-    background:
-        #0d0d0d;
-
-    border-top:
-        1px solid rgba(255,255,255,0.08);
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.08);
-}
-
-.rooms-inner {
-    max-width: 1150px;
-
-    margin: auto;
-}
-
-.room-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
-}
-
-.room-card {
-    background:
-        #151515;
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
-    overflow: hidden;
-
-    transition: 0.4s;
-}
-
-.room-card:hover {
-    transform:
-        translateY(-8px);
-
-    border-color:
-        rgba(217,196,126,0.45);
-}
-
-.room-image {
-    height: 270px;
-
+.hero-buttons {
+    margin-top: 30px;
     display: flex;
+    gap: 12px;
+}
 
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #292929,
-            #101010
-        );
-
-    color: #777;
-
-    font-family: sans-serif;
-
-    font-size: 12px;
-
+.button-main,
+.button-sub {
+    display: inline-block;
+    padding: 16px 30px;
+    font-size: 11px;
     letter-spacing: 2px;
 }
 
-.room-info {
-    padding: 30px;
+.button-main {
+    background: #222;
+    color: white;
 }
 
-.room-info h3 {
-    margin: 0 0 15px;
-
-    font-size: 20px;
-
-    font-weight: normal;
-
-    letter-spacing: 3px;
+.button-sub {
+    border: 1px solid #999;
 }
 
-.room-info p {
-    font-family: sans-serif;
-
-    font-size: 13px;
-
-    line-height: 1.9;
-
-    color: #aaa;
+.button-main:hover {
+    background: #b39a54;
 }
 
-.room-price {
-    color: #d9c47e !important;
-
-    font-family: Georgia, serif !important;
-
-    font-size: 18px !important;
+.button-sub:hover {
+    border-color: #b39a54;
+    color: #b39a54;
 }
 
-/* =====================================================
-   DINING
-===================================================== */
-
-.dining {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    padding:
-        0;
-
-    max-width: 1300px;
-}
-
-.dining-image {
-    min-height: 550px;
+.hero-visual {
+    height: 450px;
 
     background:
         linear-gradient(
             135deg,
-            #252525,
-            #0d0d0d
+            #d3d0c6,
+            #9e9a91
         );
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    color: #777;
+    color: rgba(255,255,255,0.7);
 
-    font-family: sans-serif;
-
-    letter-spacing: 3px;
-}
-
-.dining-text {
-    padding:
-        80px 65px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    background:
-        #111;
-}
-
-.dining-label {
-    color: #b8a56b;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 18px;
-}
-
-.dining-text h2 {
-    margin: 0 0 25px;
-
-    font-size: 36px;
-
-    font-weight: normal;
-
+    font-family: Georgia, serif;
+    font-size: 24px;
     letter-spacing: 5px;
 }
 
-.dining-text p {
-    font-family: sans-serif;
-
-    font-size: 14px;
-
-    line-height: 2.2;
-
-    color: #bdbab2;
+.hero-visual::before {
+    content: "STELLAR HOME";
 }
 
-/* =====================================================
-   FACILITIES
-===================================================== */
 
-.facilities {
-    text-align: center;
+/* =========================
+   SEARCH
+========================= */
+
+.search-section {
+    max-width: 1100px;
+    margin: -40px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 20;
 }
 
-.facility-grid {
-    display: grid;
+.search-box {
+    padding: 32px;
+    background: white;
 
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.12);
 }
 
-.facility {
-    padding:
-        45px 25px;
+.search-title {
+    margin: 0 0 22px;
 
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
-    transition: 0.35s;
-}
-
-.facility:hover {
-    background:
-        rgba(255,255,255,0.07);
-
-    transform:
-        translateY(-5px);
-}
-
-.facility-icon {
-    font-size: 32px;
-
-    margin-bottom: 18px;
-}
-
-.facility h3 {
-    margin: 0 0 12px;
-
-    font-size: 18px;
-
+    font-family: Georgia, serif;
+    font-size: 26px;
     font-weight: normal;
-
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
-.facility p {
-    margin: 0;
+.search-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
 
-    font-family: sans-serif;
+.search-select {
+    width: 100%;
+    padding: 16px;
+
+    border: 1px solid #ddd;
+    background: #fafafa;
+
+    font-size: 13px;
+    color: #444;
+
+    cursor: pointer;
+}
+
+.search-select:focus {
+    outline: none;
+    border-color: #b39a54;
+}
+
+.search-buttons {
+    margin-top: 14px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.search-button,
+.reset-button {
+    padding: 16px;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+.search-button {
+    border: none;
+    background: #b39a54;
+    color: white;
+}
+
+.search-button:hover {
+    background: #222;
+}
+
+.reset-button {
+    border: 1px solid #ddd;
+    background: white;
+    color: #555;
+}
+
+.reset-button:hover {
+    border-color: #b39a54;
+    color: #b39a54;
+}
+
+.search-result {
+    margin-top: 15px;
+    padding: 13px;
+
+    text-align: center;
+
+    background: #f7f6f1;
 
     font-size: 12px;
-
-    line-height: 1.8;
-
-    color: #999;
+    color: #777;
 }
 
-/* =====================================================
-   ACCESS
-===================================================== */
 
-.access {
-    max-width: none;
+/* =========================
+   SECTION
+========================= */
 
-    background:
-        #0d0d0d;
+section {
+    padding: 100px 25px;
 }
 
-.access-inner {
-    max-width: 1050px;
-
+.section-inner {
+    max-width: 1150px;
     margin: auto;
 }
 
-.access-content {
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-heading small {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #b39a54;
+
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.section-heading p {
+    margin-top: 15px;
+
+    max-width: 600px;
+
+    font-size: 13px;
+    line-height: 2;
+    color: #777;
+}
+
+
+/* =========================
+   PROPERTY
+========================= */
+
+.recommend {
+    background: white;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.property-card {
+    display: block;
+    min-width: 0;
+
+    background: white;
+    border: 1px solid #e1e1e1;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+
+    cursor: pointer;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.1);
+}
+
+.property-top {
+    padding: 20px 22px;
+
+    background: #222;
+    color: white;
+}
+
+.property-tag {
+    display: inline-block;
+
+    margin-bottom: 12px;
+    padding: 6px 9px;
+
+    background: #b39a54;
+
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.property-top h3 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.property-info {
+    padding: 22px;
+}
+
+.property-location {
+    margin-bottom: 14px;
+
+    font-size: 11px;
+    color: #888;
+}
+
+.property-price {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #b39a54;
+}
+
+.property-meta {
+    margin-top: 16px;
+    padding-top: 14px;
+
+    border-top: 1px solid #eee;
+
+    font-size: 11px;
+    line-height: 2;
+    color: #777;
+}
+
+.property-station {
+    margin-top: 7px;
+
+    font-size: 11px;
+    color: #555;
+}
+
+.property-detail {
+    display: inline-block;
+
+    margin-top: 18px;
+    padding: 10px 13px;
+
+    border: 1px solid #ddd;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.property-card:hover .property-detail {
+    border-color: #b39a54;
+    color: #b39a54;
+}
+
+.no-result {
+    display: none;
+
+    margin-top: 25px;
+    padding: 45px 20px;
+
+    text-align: center;
+
+    background: #fafafa;
+    border: 1px solid #ddd;
+
+    color: #777;
+}
+
+.no-result.show {
+    display: block;
+}
+
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories {
+    background: #efeee8;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.category {
+    min-height: 260px;
+    padding: 45px;
+
+    background: #222;
+    color: white;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.category small {
+    color: #d7c48b;
+    letter-spacing: 3px;
+    font-size: 10px;
+}
+
+.category h3 {
+    margin: 10px 0;
+
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: normal;
+}
+
+.category p {
+    margin: 0 0 20px;
+
+    color: #ddd;
+    font-size: 12px;
+}
+
+.category a {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border: 1px solid #aaa;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.category a:hover {
+    background: white;
+    color: #222;
+}
+
+
+/* =========================
+   COMPANY
+========================= */
+
+.company {
+    background: white;
+}
+
+.company-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.company-visual {
+    height: 420px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d5d2c8,
+            #a09c93
+        );
+
+    color: white;
+
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+
+.company-text h3 {
+    margin: 0 0 20px;
+
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.company-text p {
+    font-size: 13px;
+    line-height: 2.1;
+    color: #666;
+}
+
+.company-data {
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.company-data div {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #ddd;
+
+    font-size: 12px;
+}
+
+.company-data span:first-child {
+    color: #999;
+}
+
+
+/* =========================
+   NEWS
+========================= */
+
+.news {
+    background: #f7f7f5;
+}
+
+.news-list {
+    border-top: 1px solid #ddd;
+}
+
+.news-item {
     display: grid;
 
     grid-template-columns:
-        1fr 1.3fr;
+        120px 100px 1fr;
 
+    gap: 20px;
+
+    padding: 20px 5px;
+
+    border-bottom: 1px solid #ddd;
+
+    font-size: 12px;
+}
+
+.news-date {
+    color: #999;
+}
+
+.news-category {
+    color: #b39a54;
+}
+
+
+/* =========================
+   ACCESS
+========================= */
+
+.access {
+    background: white;
+}
+
+.access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
 
-.access-box {
-    padding: 40px;
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
-    background:
-        #151515;
+.access-info {
+    padding: 35px;
+    background: #f4f2eb;
 }
 
-.access-box h3 {
+.access-info h3 {
     margin-top: 0;
 
-    font-size: 21px;
-
+    font-family: Georgia, serif;
+    font-size: 25px;
     font-weight: normal;
-
-    letter-spacing: 4px;
-}
-
-.access-info {
-    font-family: sans-serif;
-
-    font-size: 13px;
-
-    line-height: 2.2;
-
-    color: #aaa;
 }
 
 .address {
-    color: #d9c47e;
+    margin: 25px 0;
 
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 2;
+    color: #555;
+}
 
-    line-height: 1.8;
+.access-detail {
+    font-size: 12px;
+    line-height: 2;
+    color: #777;
 }
 
 .map {
-    min-height: 400px;
-
-    overflow: hidden;
-
-    border:
-        1px solid rgba(255,255,255,0.1);
+    min-height: 380px;
 }
 
 .map iframe {
     width: 100%;
-
     height: 100%;
-
-    min-height: 400px;
-
+    min-height: 380px;
     border: 0;
-
-    filter:
-        grayscale(0.8)
-        brightness(0.75);
 }
 
-/* =====================================================
-   RESERVATION
-===================================================== */
 
-.reservation {
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    background: #222;
+    color: white;
+}
+
+.contact-inner {
+    max-width: 800px;
+    margin: auto;
+}
+
+.contact .section-heading {
+    text-align: center;
+}
+
+.contact .section-heading h2 {
+    color: white;
+}
+
+.contact .section-heading p {
+    margin-left: auto;
+    margin-right: auto;
+    color: #aaa;
+}
+
+.contact-form {
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #ddd;
+}
+
+.required {
+    margin-left: 7px;
+    color: #d7c48b;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #555;
+
+    background: #151515;
+
+    color: white;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #b39a54;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-property {
+    color: #d7c48b !important;
+}
+
+.form-submit {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 18px;
+
+    border: none;
+
+    background: #b39a54;
+
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background: white;
+    color: #222;
+}
+
+.form-message {
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
     text-align: center;
 
-    max-width: 800px;
+    background: #f4f2eb;
+
+    color: #333;
+
+    font-size: 13px;
+
+    line-height: 1.8;
 }
 
-.reservation-text {
-    font-family: sans-serif;
+.form-message.show {
+    display: block;
+}
 
-    color: #aaa;
+
+/* =========================
+   PROPERTY MODAL
+========================= */
+
+.property-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    background: rgba(0,0,0,0.65);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.property-modal.active {
+    display: flex;
+}
+
+.property-modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 850px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 50px;
+
+    background: white;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.3);
+}
+
+.property-close {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 32px;
+
+    color: #777;
+
+    cursor: pointer;
+}
+
+.property-close:hover {
+    color: #b39a54;
+}
+
+.detail-type {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    background: #b39a54;
+
+    color: white;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.property-modal-box h2 {
+    margin: 18px 0 12px;
+
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+}
+
+.detail-price {
+    margin-bottom: 35px;
+
+    font-family: Georgia, serif;
+
+    font-size: 27px;
+
+    color: #b39a54;
+}
+
+.detail-main {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    border-top: 1px solid #ddd;
+}
+
+.detail-item {
+    padding: 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.detail-item:nth-child(odd) {
+    border-right: 1px solid #ddd;
+}
+
+.detail-item span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 10px;
+
+    color: #999;
+
+    letter-spacing: 1px;
+}
+
+.detail-item strong {
+    font-size: 13px;
+
+    font-weight: normal;
+
+    line-height: 1.7;
+}
+
+.detail-section {
+    margin-top: 30px;
+}
+
+.detail-section h3 {
+    margin-bottom: 12px;
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    font-weight: normal;
+}
+
+.detail-section p {
+    margin: 0;
+
+    font-size: 13px;
 
     line-height: 2;
 
-    margin-bottom: 35px;
+    color: #666;
 }
 
-.reserve-button {
-    display: inline-block;
+.detail-contact {
+    display: block;
 
-    padding:
-        17px 50px;
+    margin-top: 35px;
 
-    background:
-        #d9c47e;
+    padding: 18px;
 
-    color:
-        #080808;
+    background: #222;
 
-    text-decoration: none;
-
-    letter-spacing: 3px;
-
-    transition: 0.35s;
-}
-
-.reserve-button:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.35);
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-    padding:
-        65px 20px;
+    color: white;
 
     text-align: center;
 
-    background:
-        #050505;
+    font-size: 11px;
 
-    border-top:
-        1px solid rgba(255,255,255,0.08);
+    letter-spacing: 2px;
+}
+
+.detail-contact:hover {
+    background: #b39a54;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 50px 20px;
+
+    background: #151515;
+
+    color: #999;
+
+    text-align: center;
 }
 
 .footer-logo {
-    font-size: 23px;
+    color: white;
 
-    letter-spacing: 7px;
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    letter-spacing: 5px;
 }
 
-.footer-star {
-    margin: 18px 0;
+.footer-address {
+    margin-top: 12px;
 
-    color: #d9c47e;
-
-    letter-spacing: 8px;
+    font-size: 11px;
 }
 
-footer p {
-    font-family: sans-serif;
+.footer-copy {
+    margin-top: 25px;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 2px;
 
     color: #666;
 }
 
-/* =====================================================
-   フワッと表示
-===================================================== */
 
-.fade-up {
-    opacity: 0;
+/* =========================
+   MOBILE
+========================= */
 
-    transform:
-        translateY(35px);
-
-    transition:
-        opacity 0.9s ease,
-        transform 0.9s ease;
-}
-
-.fade-up.show {
-    opacity: 1;
-
-    transform:
-        translateY(0);
-}
-
-/* =====================================================
-   スマホ
-===================================================== */
-
-@media (max-width: 800px) {
-
-    header {
-        padding:
-            14px 18px;
-    }
-
-    .logo-text {
-        font-size: 17px;
-
-        letter-spacing: 4px;
-    }
-
-    .menu-button {
-        display: block;
-    }
+@media (max-width: 850px) {
 
     nav {
+        display: none;
+
         position: absolute;
 
-        top: 58px;
-
+        top: 75px;
         left: 15px;
         right: 15px;
 
-        display: none;
+        background: white;
 
         flex-direction: column;
 
         gap: 0;
 
-        background:
-            rgba(8,8,8,0.97);
-
-        border:
-            1px solid rgba(255,255,255,0.1);
+        box-shadow:
+            0 10px 30px rgba(0,0,0,0.1);
     }
 
     nav.open {
@@ -961,84 +1152,104 @@ footer p {
     }
 
     nav a {
-        padding:
-            18px;
+        width: 100%;
+
+        padding: 16px;
 
         text-align: center;
 
-        border-bottom:
-            1px solid rgba(255,255,255,0.07);
+        border-bottom: 1px solid #eee;
     }
 
-    .hero {
-        min-height: 650px;
+    .menu-button {
+        display: block;
     }
 
-    .hero h1 {
-        font-size: 58px;
+    .hero-inner {
+        grid-template-columns: 1fr;
 
-        letter-spacing: 8px;
+        padding: 65px 20px;
     }
 
-    .hero p {
-        font-size: 13px;
+    .hero-visual {
+        height: 330px;
+    }
 
-        letter-spacing: 2px;
+    .search-section {
+        margin-top: 0;
+    }
+
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .company-content {
+        grid-template-columns: 1fr;
+    }
+
+    .access-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
 
     section {
-        padding:
-            80px 18px;
+        padding: 75px 20px;
     }
 
-    .room-grid {
-        grid-template-columns:
-            1fr;
+    .property-modal {
+        padding: 10px;
     }
 
-    .dining {
-        grid-template-columns:
-            1fr;
+    .property-modal-box {
+        padding: 35px 20px;
+        max-height: 94vh;
     }
 
-    .dining-image {
-        min-height: 350px;
+    .property-modal-box h2 {
+        font-size: 23px;
     }
 
-    .dining-text {
-        padding:
-            55px 30px;
+    .detail-price {
+        font-size: 22px;
     }
 
-    .facility-grid {
-        grid-template-columns:
-            1fr;
+    .detail-main {
+        grid-template-columns: 1fr;
     }
 
-    .access-content {
-        grid-template-columns:
-            1fr;
+    .detail-item:nth-child(odd) {
+        border-right: none;
     }
 
-    .map {
-        min-height: 350px;
-    }
-
-    .map iframe {
-        min-height: 350px;
-    }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+<!-- =========================
+HEADER
+========================= -->
 
 <header>
 
@@ -1046,40 +1257,61 @@ footer p {
 
 <a href="#top" class="logo">
 
-<span class="logo-star">
-✦
-</span>
+<span class="logo-star">✦</span>
 
-<span class="logo-text">
-HOTEL STELLAR
-</span>
+<div>
+
+<div class="logo-text">
+STELLAR HOME
+</div>
+
+<div class="logo-sub">
+REAL ESTATE & LIFE
+</div>
+
+</div>
 
 </a>
 
 
 <button
 class="menu-button"
-onclick="toggleMenu()"
-aria-label="メニュー">
-
+onclick="toggleMenu()">
 ☰
-
 </button>
 
 
 <nav id="nav">
 
-<a href="#about">ABOUT</a>
+<a href="#search">
+物件を探す
+</a>
 
-<a href="#rooms">ROOMS</a>
+<a href="#recommend">
+おすすめ
+</a>
 
-<a href="#dining">DINING</a>
+<a href="#categories">
+売買・賃貸
+</a>
 
-<a href="#facilities">FACILITIES</a>
+<a href="#company">
+会社情報
+</a>
 
-<a href="#access">ACCESS</a>
+<a href="#news">
+お知らせ
+</a>
 
-<a href="#reservation">RESERVATION</a>
+<a href="#access">
+アクセス
+</a>
+
+<a
+href="#contact"
+class="header-contact">
+お問い合わせ
+</a>
 
 </nav>
 
@@ -1091,400 +1323,555 @@ aria-label="メニュー">
 <main id="top">
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- =========================
+HERO
+========================= -->
 
 <section class="hero">
 
-<div class="hero-photo">
+<div class="hero-inner">
 
-</div>
+<div>
 
-
-<div class="hero-content">
-
-<div class="hero-subtitle">
-A STAY UNDER THE STARS
+<div class="hero-label">
+STELLAR HOME
 </div>
 
 <h1>
-STELLAR
+暮らしを、<br>
+<span>もっと自由に。</span>
 </h1>
 
-<div class="hero-line">
-</div>
-
-<p>
-星のように、記憶に残る滞在を。
+<p class="hero-lead">
+あなたの「住みたい」を、<br>
+あなたらしい暮らしへ。
 </p>
 
+<div class="hero-buttons">
+
 <a
-href="#reservation"
-class="hero-button">
+href="#search"
+class="button-main">
+物件を探す
+</a>
 
-宿泊予約
-
+<a
+href="#contact"
+class="button-sub">
+お問い合わせ
 </a>
 
 </div>
 
+</div>
 
-<div class="scroll">
-SCROLL ↓
+
+<div class="hero-visual"></div>
+
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
+<!-- =========================
+SEARCH
+========================= -->
 
-<section id="about" class="about fade-up">
+<div
+id="search"
+class="search-section">
 
-<h2 class="section-title">
+<div class="search-box">
 
-ABOUT
-
-<small>
-HOTEL STELLARについて
-</small>
-
+<h2 class="search-title">
+物件を探す
 </h2>
 
 
-<p class="about-lead">
-
-日常を離れ、<br>
-静かな時間を。
-
-</p>
+<div class="search-grid">
 
 
-<p class="about-text">
+<select
+id="areaSelect"
+class="search-select">
 
-HOTEL STELLARは、<br>
-ゆっくりとした時間を大切にするホテルです。
+<option value="all">
+エリアを選択
+</option>
 
-<br><br>
+<option value="星空区">
+星空区
+</option>
 
-旅の疲れを癒やす落ち着いた空間と、<br>
-心に残るひとときをお届けします。
+<option value="流星">
+流星エリア
+</option>
 
-<br><br>
+<option value="銀河">
+銀河エリア
+</option>
 
-星空を眺めるように、<br>
-あなたの時間をゆっくりとお楽しみください。
+<option value="月見">
+月見エリア
+</option>
 
-</p>
+<option value="彗星">
+彗星エリア
+</option>
 
-</section>
+</select>
 
 
-<!-- =====================================================
-     ROOMS
-===================================================== -->
+<select
+id="typeSelect"
+class="search-select">
 
-<section id="rooms" class="rooms">
+<option value="all">
+物件種別を選択
+</option>
 
-<div class="rooms-inner">
+<option value="rent">
+賃貸
+</option>
 
-<h2 class="section-title fade-up">
+<option value="sale">
+売買
+</option>
 
-ROOMS
+<option value="new">
+新築
+</option>
+
+<option value="used">
+中古
+</option>
+
+</select>
+
+
+<select
+id="roomSelect"
+class="search-select">
+
+<option value="all">
+間取りを選択
+</option>
+
+<option value="1K">
+1K
+</option>
+
+<option value="1DK">
+1DK
+</option>
+
+<option value="1LDK">
+1LDK
+</option>
+
+<option value="2LDK">
+2LDK
+</option>
+
+<option value="3LDK">
+3LDK
+</option>
+
+<option value="4LDK">
+4LDK
+</option>
+
+</select>
+
+</div>
+
+
+<div class="search-buttons">
+
+<button
+class="search-button"
+onclick="searchProperties()">
+
+この条件で検索
+
+</button>
+
+<button
+class="reset-button"
+onclick="resetSearch()">
+
+条件をリセット
+
+</button>
+
+</div>
+
+
+<div
+id="searchResult"
+class="search-result">
+物件を読み込んでいます…
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+PROPERTY
+========================= -->
+
+<section
+id="recommend"
+class="recommend">
+
+<div class="section-inner">
+
+<div class="section-heading">
 
 <small>
-客室
+PROPERTY SEARCH
 </small>
-
-</h2>
-
-
-<div class="room-grid">
-
-
-<div class="room-card fade-up">
-
-<div class="room-image">
-ROOM PHOTO
-</div>
-
-<div class="room-info">
-
-<h3>
-STELLAR ROOM
-</h3>
-
-<p>
-落ち着いた空間で<br>
-ゆったりと過ごせるスタンダードルーム。
-</p>
-
-<p class="room-price">
-1泊 ¥18,000〜
-</p>
-
-</div>
-
-</div>
-
-
-<div class="room-card fade-up">
-
-<div class="room-image">
-ROOM PHOTO
-</div>
-
-<div class="room-info">
-
-<h3>
-AURORA SUITE
-</h3>
-
-<p>
-広々とした空間と<br>
-上質なインテリアを楽しめるスイート。
-</p>
-
-<p class="room-price">
-1泊 ¥35,000〜
-</p>
-
-</div>
-
-</div>
-
-
-<div class="room-card fade-up">
-
-<div class="room-image">
-ROOM PHOTO
-</div>
-
-<div class="room-info">
-
-<h3>
-STELLAR SUITE
-</h3>
-
-<p>
-特別な日のための<br>
-HOTEL STELLAR最高級のお部屋。
-</p>
-
-<p class="room-price">
-1泊 ¥50,000〜
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     DINING
-===================================================== -->
-
-<section id="dining" class="dining fade-up">
-
-
-<div class="dining-image">
-
-DINING PHOTO
-
-</div>
-
-
-<div class="dining-text">
-
-<div class="dining-label">
-HOTEL RESTAURANT
-</div>
 
 <h2>
-STELLAR DINING
+おすすめ物件
 </h2>
 
 <p>
-
-旬の食材を使った料理と、<br>
-落ち着いた空間で特別な食事を。
-
+STELLAR HOMEが選んだ、
+おすすめの住まいをご紹介します。
 </p>
 
-<p>
+</div>
 
-朝食からディナーまで、<br>
-ホテルで過ごす時間そのものを<br>
-楽しんでいただけます。
 
-</p>
+<div
+id="propertyGrid"
+class="property-grid">
+</div>
+
+
+<div
+id="noResult"
+class="no-result">
+
+条件に一致する物件がありません。
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     FACILITIES
-===================================================== -->
+<!-- =========================
+CATEGORIES
+========================= -->
 
-<section id="facilities" class="facilities">
+<section
+id="categories"
+class="categories">
 
-<h2 class="section-title fade-up">
+<div class="section-inner">
 
-FACILITIES
+<div class="section-heading">
 
 <small>
-館内施設
+PROPERTY SEARCH
 </small>
 
+<h2>
+暮らし方から探す
 </h2>
 
-
-<div class="facility-grid">
-
-
-<div class="facility fade-up">
-
-<div class="facility-icon">
-♨
-</div>
-
-<h3>
-SPA
-</h3>
-
 <p>
-旅の疲れを癒やす<br>
-リラックス空間。
+あなたの暮らしに合った住まいを見つけます。
 </p>
 
 </div>
 
 
-<div class="facility fade-up">
+<div class="category-grid">
 
-<div class="facility-icon">
-☕
-</div>
+
+<div class="category">
+
+<div>
+
+<small>
+FOR SALE
+</small>
 
 <h3>
-LOUNGE
+売買物件
 </h3>
 
 <p>
-ゆっくり過ごせる<br>
-ホテルラウンジ。
+マンション・戸建て・土地など
 </p>
 
+<a href="#search">
+売買物件を探す →
+</a>
+
+</div>
+
 </div>
 
 
-<div class="facility fade-up">
+<div class="category">
 
-<div class="facility-icon">
-🌙
-</div>
+<div>
+
+<small>
+FOR RENT
+</small>
 
 <h3>
-ROOFTOP
+賃貸物件
 </h3>
 
 <p>
-夜空を眺めながら<br>
-特別な時間を。
+一人暮らしからファミリーまで
 </p>
+
+<a href="#search">
+賃貸物件を探す →
+</a>
 
 </div>
 
+</div>
+
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     ACCESS
-===================================================== -->
+<!-- =========================
+COMPANY
+========================= -->
 
-<section id="access" class="access">
+<section
+id="company"
+class="company">
 
-<div class="access-inner">
+<div class="section-inner">
 
-<h2 class="section-title fade-up">
+<div class="company-content">
 
+
+<div class="company-visual">
+STELLAR HOME
+</div>
+
+
+<div class="company-text">
+
+<div class="section-heading">
+
+<small>
+ABOUT US
+</small>
+
+<h2>
+会社について
+</h2>
+
+</div>
+
+
+<h3>
+「住まい」から、<br>
+毎日を変えていく。
+</h3>
+
+
+<p>
+STELLAR HOMEは、住まい探しを通して
+お客様一人ひとりの暮らしを考える
+不動産会社です。
+</p>
+
+
+<p>
+物件をご紹介するだけではなく、
+その先にある生活まで一緒に考えることを
+大切にしています。
+</p>
+
+
+<div class="company-data">
+
+<div>
+<span>会社名</span>
+<span>STELLAR HOME</span>
+</div>
+
+<div>
+<span>所在地</span>
+<span>東京都星空区流星10-2-8</span>
+</div>
+
+<div>
+<span>営業時間</span>
+<span>10:00〜18:00</span>
+</div>
+
+<div>
+<span>定休日</span>
+<span>水曜日</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+NEWS
+========================= -->
+
+<section
+id="news"
+class="news">
+
+<div class="section-inner">
+
+<div class="section-heading">
+
+<small>
+NEWS
+</small>
+
+<h2>
+お知らせ
+</h2>
+
+</div>
+
+
+<div class="news-list">
+
+
+<div class="news-item">
+
+<div class="news-date">
+2026.09.10
+</div>
+
+<div class="news-category">
+お知らせ
+</div>
+
+<div>
+STELLAR HOMEのホームページを公開しました。
+</div>
+
+</div>
+
+
+<div class="news-item">
+
+<div class="news-date">
+2026.09.05
+</div>
+
+<div class="news-category">
+物件情報
+</div>
+
+<div>
+おすすめ物件情報を更新しました。
+</div>
+
+</div>
+
+
+<div class="news-item">
+
+<div class="news-date">
+2026.09.01
+</div>
+
+<div class="news-category">
+お知らせ
+</div>
+
+<div>
+STELLAR HOMEがオープンしました。
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
 ACCESS
+========================= -->
+
+<section
+id="access"
+class="access">
+
+<div class="section-inner">
+
+<div class="section-heading">
 
 <small>
-アクセス
+ACCESS
 </small>
 
+<h2>
+アクセス
 </h2>
 
+</div>
 
-<div class="access-content">
 
-
-<div class="access-box fade-up">
-
-<h3>
-HOTEL STELLAR
-</h3>
+<div class="access-grid">
 
 
 <div class="access-info">
 
+<h3>
+STELLAR HOME
+</h3>
+
 <p class="address">
-
-〒000-0000<br>
-
-東京都星空区彗星6-3-4
-
+東京都星空区流星10-2-8
 </p>
 
-
-<p>
-
-チェックイン<br>
-15:00〜
-
-</p>
-
-
-<p>
-
-チェックアウト<br>
-〜11:00
-
-</p>
-
-
-<p>
-
-最寄り駅から徒歩5分
-
+<p class="access-detail">
+営業時間：10:00〜18:00<br>
+定休日：水曜日<br>
+最寄り駅：流星駅 徒歩5分
 </p>
 
 </div>
 
-</div>
 
-
-<div class="map fade-up">
+<div class="map">
 
 <iframe
-src="https://www.google.com/maps?q=東京都星空区彗星6-3-4&output=embed"
-loading="lazy"
-allowfullscreen>
+src="https://www.google.com/maps?q=東京都星空区流星10-2-8&output=embed"
+loading="lazy">
 </iframe>
 
 </div>
@@ -1497,45 +1884,148 @@ allowfullscreen>
 </section>
 
 
-<!-- =====================================================
-     RESERVATION
-===================================================== -->
+<!-- =========================
+CONTACT
+========================= -->
 
 <section
-id="reservation"
-class="reservation fade-up">
+id="contact"
+class="contact">
 
-<h2 class="section-title">
+<div class="contact-inner">
 
-RESERVATION
+
+<div class="section-heading">
 
 <small>
-宿泊予約
+CONTACT
 </small>
 
+<h2>
+お問い合わせ
 </h2>
 
-
-<p class="reservation-text">
-
-HOTEL STELLARで、<br>
-特別なひとときをお過ごしください。
-
-<br><br>
-
-宿泊に関するお問い合わせ・ご予約は<br>
-下記よりお願いいたします。
-
+<p>
+物件についてのご相談や、
+住まい探しに関するご質問など、
+お気軽にお問い合わせください。
 </p>
 
+</div>
 
-<a
-href="mailto:hotel@example.com"
-class="reserve-button">
 
-宿泊予約・お問い合わせ
+<form
+id="contactForm"
+class="contact-form"
+onsubmit="submitContact(event)"
+>
 
-</a>
+
+<div class="form-group">
+
+<label>
+お問い合わせ物件
+</label>
+
+<input
+type="text"
+id="contactProperty"
+class="form-property"
+placeholder="物件を選択すると自動で表示されます"
+readonly>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+お名前
+<span class="required">
+必須
+</span>
+</label>
+
+<input
+type="text"
+id="contactName"
+placeholder="例：星空 太郎"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+メールアドレス
+<span class="required">
+必須
+</span>
+</label>
+
+<input
+type="email"
+id="contactEmail"
+placeholder="example@email.com"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+電話番号
+</label>
+
+<input
+type="tel"
+id="contactPhone"
+placeholder="090-0000-0000">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+お問い合わせ内容
+<span class="required">
+必須
+</span>
+</label>
+
+<textarea
+id="contactMessage"
+placeholder="物件について聞きたいことをご入力ください"
+required></textarea>
+
+</div>
+
+
+<button
+type="submit"
+class="form-submit">
+
+この内容で送信する
+
+</button>
+
+
+<div
+id="formMessage"
+class="form-message">
+
+お問い合わせありがとうございます。<br>
+内容を確認のうえ、担当者よりご連絡いたします。
+
+</div>
+
+
+</form>
+
+</div>
 
 </section>
 
@@ -1543,150 +2033,961 @@ class="reserve-button">
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- =========================
+PROPERTY DETAIL MODAL
+========================= -->
+
+<div
+id="propertyModal"
+class="property-modal">
+
+<div class="property-modal-box">
+
+
+<button
+class="property-close"
+onclick="closePropertyDetail()">
+
+×
+
+</button>
+
+
+<div
+id="detailType"
+class="detail-type">
+RENT
+</div>
+
+
+<h2 id="detailName">
+物件名
+</h2>
+
+
+<div
+id="detailPrice"
+class="detail-price">
+¥100,000 / 月
+</div>
+
+
+<div class="detail-main">
+
+
+<div class="detail-item">
+
+<span>
+間取り
+</span>
+
+<strong id="detailRoom">
+1LDK
+</strong>
+
+</div>
+
+
+<div class="detail-item">
+
+<span>
+専有面積
+</span>
+
+<strong id="detailSize">
+45.0㎡
+</strong>
+
+</div>
+
+
+<div class="detail-item">
+
+<span>
+最寄り駅
+</span>
+
+<strong id="detailStation">
+星空駅 徒歩5分
+</strong>
+
+</div>
+
+
+<div class="detail-item">
+
+<span>
+所在地
+</span>
+
+<strong id="detailAddress">
+東京都星空区
+</strong>
+
+</div>
+
+
+<div class="detail-item">
+
+<span>
+築年
+</span>
+
+<strong id="detailYear">
+2024年
+</strong>
+
+</div>
+
+
+<div class="detail-item">
+
+<span>
+階数
+</span>
+
+<strong id="detailFloor">
+4階
+</strong>
+
+</div>
+
+
+<div class="detail-item">
+
+<span>
+構造
+</span>
+
+<strong id="detailStructure">
+鉄筋コンクリート造
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="detail-section">
+
+<h3>
+設備・仕様
+</h3>
+
+<p id="detailEquipment">
+オートロック・エレベーター・宅配ボックス
+</p>
+
+</div>
+
+
+<div class="detail-section">
+
+<h3>
+物件について
+</h3>
+
+<p id="detailDescription">
+おすすめ物件です。
+</p>
+
+</div>
+
+
+<a
+href="#contact"
+class="detail-contact"
+onclick="contactFromProperty()">
+
+この物件について問い合わせる
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================
+FOOTER
+========================= -->
 
 <footer>
 
 <div class="footer-logo">
-✦ HOTEL STELLAR ✦
+✦ STELLAR HOME ✦
 </div>
 
-<div class="footer-star">
-✧　⋆　✦　⋆　✧　⋆　✦
+<div class="footer-address">
+東京都星空区流星10-2-8
 </div>
 
-<p>
-東京都星空区彗星6-3-4
-</p>
-
-<p>
-© HOTEL STELLAR. ALL RIGHTS RESERVED.
-</p>
+<div class="footer-copy">
+© STELLAR HOME. ALL RIGHTS RESERVED.
+</div>
 
 </footer>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
-/* スマホメニュー */
+/* =====================================
+   AREA
+===================================== */
 
-function toggleMenu() {
+const areas = [
 
-    const nav =
-        document.getElementById("nav");
+    {
+        name: "星空区",
+        station: "星空駅"
+    },
 
-    nav.classList.toggle("open");
+    {
+        name: "流星",
+        station: "流星駅"
+    },
 
-}
+    {
+        name: "銀河",
+        station: "銀河駅"
+    },
+
+    {
+        name: "月見",
+        station: "月見駅"
+    },
+
+    {
+        name: "彗星",
+        station: "彗星駅"
+    }
+
+];
 
 
-/* ナビを押したら閉じる */
+/* =====================================
+   TYPE
+===================================== */
 
-document
-.querySelectorAll("nav a")
-.forEach(function(link) {
+const types = [
 
-    link.addEventListener(
-        "click",
-        function() {
+    {
+        value: "rent",
+        name: "賃貸"
+    },
 
-            document
-            .getElementById("nav")
-            .classList
-            .remove("open");
+    {
+        value: "sale",
+        name: "売買"
+    },
 
-        }
-    );
+    {
+        value: "new",
+        name: "新築"
+    },
+
+    {
+        value: "used",
+        name: "中古"
+    }
+
+];
+
+
+/* =====================================
+   ROOM
+===================================== */
+
+const rooms = [
+
+    "1K",
+    "1DK",
+    "1LDK",
+    "2LDK",
+    "3LDK",
+    "4LDK"
+
+];
+
+
+/* =====================================
+   PROPERTY DATA
+===================================== */
+
+const properties = [];
+
+
+areas.forEach(function(area) {
+
+    types.forEach(function(type) {
+
+        rooms.forEach(function(room) {
+
+            for (
+                let i = 1;
+                i <= 3;
+                i++
+            ) {
+
+                let price;
+
+                if (
+                    type.value === "rent"
+                ) {
+
+                    price =
+                        "¥" +
+                        (
+                            80 +
+                            rooms.indexOf(room) * 8 +
+                            i * 5
+                        ) +
+                        ",000 / 月";
+
+                } else {
+
+                    price =
+                        "¥" +
+                        (
+                            30 +
+                            rooms.indexOf(room) * 5 +
+                            i * 2
+                        ) +
+                        ",800,000";
+
+                }
+
+
+                const size =
+                    (
+                        25 +
+                        rooms.indexOf(room) * 10 +
+                        i * 2.3
+                    ).toFixed(1);
+
+
+                properties.push({
+
+                    id:
+                        properties.length,
+
+                    area:
+                        area.name,
+
+                    type:
+                        type.value,
+
+                    typeName:
+                        type.name,
+
+                    room:
+                        room,
+
+                    name:
+                        "STELLAR " +
+                        area.name +
+                        " " +
+                        type.name +
+                        " " +
+                        room +
+                        " " +
+                        String(i)
+                            .padStart(3,"0"),
+
+                    price:
+                        price,
+
+                    size:
+                        size + "㎡",
+
+                    station:
+                        area.station,
+
+                    walk:
+                        (i + 3) + "分",
+
+                    address:
+                        "東京都星空区" +
+                        area.name +
+                        "10-" +
+                        (i + 1) +
+                        "-" +
+                        (i + 2),
+
+                    year:
+                        2020 + i,
+
+                    floor:
+                        (i + 3) + "階",
+
+                    structure:
+                        "鉄筋コンクリート造",
+
+                    equipment:
+                        "オートロック・エレベーター・宅配ボックス・浴室乾燥機・独立洗面台・エアコン・モニター付きインターホン",
+
+                    description:
+                        "STELLAR HOMEがおすすめする" +
+                        "「" +
+                        area.name +
+                        "」エリアの物件です。" +
+                        "駅から徒歩圏内で、暮らしやすさと利便性を" +
+                        "兼ね備えた住まいです。"
+
+                });
+
+            }
+
+        });
+
+    });
 
 });
 
 
-/* スクロールアニメーション */
+/* =====================================
+   PROPERTY CARD
+===================================== */
 
-const fadeElements =
-    document.querySelectorAll(".fade-up");
+function createCard(property) {
+
+    return `
+
+        <div
+            class="property-card"
+            onclick="openPropertyDetail(${property.id})"
+        >
+
+            <div class="property-top">
+
+                <div class="property-tag">
+                    ${property.typeName}
+                </div>
+
+                <h3>
+                    ${property.name}
+                </h3>
+
+            </div>
 
 
-const observer =
-    new IntersectionObserver(
+            <div class="property-info">
 
-        function(entries) {
+                <div class="property-location">
+                    ${property.address}
+                </div>
 
-            entries.forEach(
-                function(entry) {
+                <div class="property-price">
+                    ${property.price}
+                </div>
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                <div class="property-meta">
+                    間取り：${property.room}<br>
+                    専有面積：${property.size}
+                </div>
 
-                        entry.target
+                <div class="property-station">
+                    最寄り駅：
+                    ${property.station}
+                    徒歩${property.walk}
+                </div>
+
+                <div class="property-detail">
+                    物件詳細を見る →
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   SHOW PROPERTY
+===================================== */
+
+function showProperties(list) {
+
+    const grid =
+        document.getElementById(
+            "propertyGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    list.forEach(function(property) {
+
+        grid.innerHTML +=
+            createCard(property);
+
+    });
+
+
+    document.getElementById(
+        "searchResult"
+    ).textContent =
+        list.length +
+        "件の物件が見つかりました";
+
+
+    const noResult =
+        document.getElementById(
+            "noResult"
+        );
+
+
+    if (list.length === 0) {
+
+        noResult.classList.add(
+            "show"
+        );
+
+    } else {
+
+        noResult.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+function searchProperties() {
+
+    const area =
+        document.getElementById(
+            "areaSelect"
+        ).value;
+
+
+    const type =
+        document.getElementById(
+            "typeSelect"
+        ).value;
+
+
+    const room =
+        document.getElementById(
+            "roomSelect"
+        ).value;
+
+
+    const results =
+        properties.filter(
+            function(property) {
+
+                const areaOK =
+                    area === "all" ||
+                    property.area === area;
+
+
+                const typeOK =
+                    type === "all" ||
+                    property.type === type;
+
+
+                const roomOK =
+                    room === "all" ||
+                    property.room === room;
+
+
+                return (
+                    areaOK &&
+                    typeOK &&
+                    roomOK
+                );
+
+            }
+        );
+
+
+    showProperties(results);
+
+
+    document
+        .getElementById("recommend")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =====================================
+   RESET
+===================================== */
+
+function resetSearch() {
+
+    document.getElementById(
+        "areaSelect"
+    ).value = "all";
+
+
+    document.getElementById(
+        "typeSelect"
+    ).value = "all";
+
+
+    document.getElementById(
+        "roomSelect"
+    ).value = "all";
+
+
+    showProperties(
+        properties
+    );
+
+}
+
+
+/* =====================================
+   SELECTED PROPERTY
+===================================== */
+
+let selectedProperty = null;
+
+
+/* =====================================
+   OPEN DETAIL
+===================================== */
+
+function openPropertyDetail(id) {
+
+    const property =
+        properties.find(
+            function(item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!property) {
+        return;
+    }
+
+
+    selectedProperty =
+        property;
+
+
+    document.getElementById(
+        "detailType"
+    ).textContent =
+        property.typeName;
+
+
+    document.getElementById(
+        "detailName"
+    ).textContent =
+        property.name;
+
+
+    document.getElementById(
+        "detailPrice"
+    ).textContent =
+        property.price;
+
+
+    document.getElementById(
+        "detailRoom"
+    ).textContent =
+        property.room;
+
+
+    document.getElementById(
+        "detailSize"
+    ).textContent =
+        property.size;
+
+
+    document.getElementById(
+        "detailStation"
+    ).textContent =
+        property.station +
+        " 徒歩" +
+        property.walk;
+
+
+    document.getElementById(
+        "detailAddress"
+    ).textContent =
+        property.address;
+
+
+    document.getElementById(
+        "detailYear"
+    ).textContent =
+        property.year +
+        "年";
+
+
+    document.getElementById(
+        "detailFloor"
+    ).textContent =
+        property.floor;
+
+
+    document.getElementById(
+        "detailStructure"
+    ).textContent =
+        property.structure;
+
+
+    document.getElementById(
+        "detailEquipment"
+    ).textContent =
+        property.equipment;
+
+
+    document.getElementById(
+        "detailDescription"
+    ).textContent =
+        property.description;
+
+
+    document.getElementById(
+        "propertyModal"
+    ).classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =====================================
+   CLOSE DETAIL
+===================================== */
+
+function closePropertyDetail() {
+
+    document
+        .getElementById(
+            "propertyModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =====================================
+   CONTACT FROM PROPERTY
+===================================== */
+
+function contactFromProperty() {
+
+    if (
+        selectedProperty
+    ) {
+
+        document.getElementById(
+            "contactProperty"
+        ).value =
+            selectedProperty.name;
+
+    }
+
+
+    closePropertyDetail();
+
+
+    setTimeout(
+        function() {
+
+            document
+                .getElementById(
+                    "contact"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        },
+        100
+    );
+
+}
+
+
+/* =====================================
+   CONTACT FORM
+===================================== */
+
+function submitContact(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "contactName"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "contactEmail"
+        ).value.trim();
+
+
+    const message =
+        document.getElementById(
+            "contactMessage"
+        ).value.trim();
+
+
+    if (
+        name === "" ||
+        email === "" ||
+        message === ""
+    ) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "formMessage"
+    ).classList.add(
+        "show"
+    );
+
+
+    document.getElementById(
+        "contactForm"
+    ).reset();
+
+
+    document.getElementById(
+        "contactProperty"
+    ).value =
+        "";
+
+}
+
+
+/* =====================================
+   MENU
+===================================== */
+
+function toggleMenu() {
+
+    document
+        .getElementById("nav")
+        .classList
+        .toggle("open");
+
+}
+
+
+/* =====================================
+   MODAL OUTSIDE CLICK
+===================================== */
+
+document
+    .getElementById(
+        "propertyModal"
+    )
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closePropertyDetail();
+
+            }
+
+        }
+    );
+
+
+/* =====================================
+   ESC
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closePropertyDetail();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+document
+    .querySelectorAll(
+        "nav a"
+    )
+    .forEach(
+        function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    document
+                        .getElementById(
+                            "nav"
+                        )
                         .classList
-                        .add("show");
-
-                        observer
-                        .unobserve(
-                            entry.target
+                        .remove(
+                            "open"
                         );
-
-                    }
 
                 }
             );
 
-        },
-
-        {
-            threshold: 0.15
         }
-
     );
 
 
-fadeElements.forEach(
-    function(element) {
+/* =====================================
+   INITIAL DISPLAY
+===================================== */
 
-        observer.observe(element);
-
-    }
-);
-
-
-/* ヘッダー */
-
-window.addEventListener(
-    "scroll",
-    function() {
-
-        const header =
-            document.querySelector(
-                "header"
-            );
-
-        if (
-            window.scrollY > 80
-        ) {
-
-            header.style.padding =
-                "12px 35px";
-
-        } else {
-
-            header.style.padding =
-                "20px 35px";
-
-        }
-
-    }
+showProperties(
+    properties
 );
 
 </script>
-
 
 </body>
 </html>
